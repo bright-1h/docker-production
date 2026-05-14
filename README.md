@@ -85,7 +85,7 @@ The app will be available at http://localhost:5000.
 ## Challenges & How I Resolved Them
 
 1. Container failed to start — Flask dependencies not installed  
-When I first tried to run the container, it crashed immediately because Flask and its dependencies weren't being installed. I had the `requirements.txt` file in the project but hadn't added the `COPY requirements.txt .` and `RUN pip install` steps to the Dockerfile yet. Once I added those two lines (before copying the rest of the application code), the container started up correctly.
+When I first tried to run the flask-app container, it crashed immediately because Flask and its dependencies weren't being installed. I had the `requirements.txt` file in the project but hadn't added the `COPY requirements.txt .` and `RUN pip install` steps to the Dockerfile yet. Once I added those two lines (before copying the rest of the application code), the container started up correctly.
 
 2. App service was unhealthy after `docker compose up --build -d`  
 After bringing up the stack, `docker-assignment-web-1` was reporting as unhealthy. The health check in `docker-compose.yml` was using `curl -f http://localhost:5000/health`, but `python:3.11-slim` doesn't ship with `curl` installed. Rather than installing `curl` just for the health check (which would add unnecessary weight to the image), I replaced it with a pure Python one-liner using the built-in `urllib.request` module:
