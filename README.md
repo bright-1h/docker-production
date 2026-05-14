@@ -35,12 +35,12 @@ The rewritten Dockerfile uses two stages:
 Here's the output of `docker images` after building both versions:
 
 ```
-REPOSITORY          TAG       IMAGE ID       CREATED AT                      SIZE
-docker-assignment   after     7594a679b8aa   2026-05-14 11:54:43 +0000 GMT   132MB
-docker-assignment   before    cfe42efb456e   2026-05-14 11:53:05 +0000 GMT   244MB
+REPOSITORY   TAG    IMAGE ID       CREATED AT                      SIZE
+flask-app    v1.0   f8a79b8ea2b0   2026-05-14 21:02:36 +0000 GMT   214MB
+flask-app    v2.0   b8476dafaef9   2026-05-14 21:02:36 +0000 GMT   132MB
 ```
 
-That's nearly half the original size, without touching a single line of application code.
+That's a reduction from 214MB down to 132MB — **38% smaller** — without touching a single line of application code.
 
 
 ## `.dockerignore`
