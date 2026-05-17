@@ -1,0 +1,7 @@
+# Swarm overrides — merged on top of docker-compose.yml at deploy time.
+# Switches the network driver from bridge (local dev) to overlay (swarm).
+# Usage: docker stack deploy -c docker-compose.yml -c docker-compose.swarm.yml myapp
+
+networks:
+  app-network:
+    driver: overlay

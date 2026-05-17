@@ -1,0 +1,11 @@
+groups:
+  - name: flask-app
+    rules:
+      - alert: FlaskAppDown
+        expr: up{job="flask-app"} == 0
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Flask app is unreachable"
+          description: "The Flask application has returned no successful scrapes for more than 30 seconds."
